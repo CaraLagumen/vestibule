@@ -14,8 +14,9 @@ const app = express();
 //TRUST HEROKU
 app.enable(`trust proxy`);
 
-//HEROKU MODIFICATION
-app.use(express.static(path.join(__dirname, `dist`, `vestibule`)));
+//SERVE FILES
+app.use("/images", express.static(path.join(__dirname, "images")));
+app.use("/", express.static(path.join(__dirname, `dist`, `vestibule`)));
 
 app.use(cors()); //ACCESS-CONTROL-ALLOW-ORIGIN
 app.options(`*`, cors());
@@ -26,7 +27,6 @@ app.use(mongoSanitize()); //DATA SANITIZATION AGAINST NOSQL QUERY INJECTION
 app.use(xss()); //DATA SANITIZATION AGAINST XSS
 app.use(
   csp({
-    //HEROKU BUG FIX?
     policies: {
       "default-src": [csp.NONE],
       "img-src": [csp.SELF]
@@ -34,9 +34,10 @@ app.use(
   })
 );
 
-app.use("/images", express.static(path.join("images")));
-
 app.use("/api/posts", postsRoutes);
 app.use("/api/user", userRoutes);
+app.use((req, res, next) => {
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
+});
 
 module.exports = app;
