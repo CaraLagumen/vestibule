@@ -5,6 +5,7 @@ const path = require("path");
 const mongoSanitize = require(`express-mongo-sanitize`);
 const xss = require(`xss-clean`);
 const csp = require(`express-csp-header`);
+const path = require(`path`);
 
 const postsRoutes = require("./routes/posts");
 const userRoutes = require("./routes/user");
@@ -15,8 +16,10 @@ const app = express();
 app.enable(`trust proxy`);
 
 //HEROKU MODIFICATION
-const distDir = __dirname + "/dist/vestibule/";
-app.use(express.static(distDir));
+app.use(express.static(path.join(__dirname, `dist`)));
+app.use("*", (req, res, next) => {
+  res.sendFile(path.join(__dirname, `dist`));
+});
 
 app.use(cors()); //ACCESS-CONTROL-ALLOW-ORIGIN
 app.options(`*`, cors());
