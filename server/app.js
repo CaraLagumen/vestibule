@@ -16,10 +16,7 @@ const app = express();
 app.enable(`trust proxy`);
 
 //HEROKU MODIFICATION
-app.use(express.static(path.join(__dirname, `dist`)));
-app.use("*", (req, res, next) => {
-  res.sendFile(path.join(__dirname, `dist`));
-});
+app.use(express.static(path.join(__dirname, `dist`, `vestibule`)));
 
 app.use(cors()); //ACCESS-CONTROL-ALLOW-ORIGIN
 app.options(`*`, cors());
