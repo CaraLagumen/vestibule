@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiUrl: `https://caralagumen-vestibule.herokuapp.com/api`
+    apiUrl: `http://localhost:4200/api`
   };
