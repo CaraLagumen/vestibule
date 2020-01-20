@@ -1,5 +1,9 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+/src/environments
+/server/RESTAPIpackage.json
+/server/RESTAPIserver.js
+
 # compiled output
 /dist
 /tmp
