@@ -1,0 +1,105 @@
+<h2>New Post</h2>
+
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <!-- <form
+    (submit)="onSavePost(postForm)"
+    #postForm="ngForm"
+    *ngIf="!isLoading"
+  >
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="title"
+        [ngModel]="post?.title"
+        required
+        placeholder="Post Title"
+        #title="ngModel"
+      >
+      <mat-error *ngIf="title.invalid">Please enter a post title.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea
+        matInput
+        rows="6"
+        name="content"
+        [ngModel]="post?.content"
+        required
+        placeholder="Post Content"
+        #content="ngModel"
+      ></textarea>
+      <mat-error *ngIf="content.invalid">Please enter post content.</mat-error>
+    </mat-form-field>-->
+
+  <form
+    (submit)="onSavePost()"
+    [formGroup]="form"
+    *ngIf="!isLoading"
+  >
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        formControlName="title"
+        placeholder="Post Title"
+      >
+      <mat-error *ngIf="form.get('title').invalid">Please enter a post title.</mat-error>
+    </mat-form-field>
+
+    <div
+      class="post-image"
+      *ngIf="post"
+    >
+      <img
+        [src]="post.imagePath"
+        [alt]="post.title"
+      >
+    </div>
+
+    <mat-form-field>
+      <textarea
+        matInput
+        rows="6"
+        formControlName="content"
+        placeholder="Post Content"
+      ></textarea>
+      <mat-error *ngIf="form.get('content').invalid">Please enter post content.</mat-error>
+      <!-- <br />
+      <p>{{ newPost }}</p> -->
+    </mat-form-field>
+
+    <div
+      class="image-preview"
+      *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid"
+    >
+      <img
+        [src]="imagePreview"
+        [alt]="form.value.title"
+      >
+    </div>
+
+    <div>
+      <button
+        mat-stroked-button
+        type="button"
+        (click)="filePicker.click()"
+      >Add Image</button>
+      <input
+        type="file"
+        #filePicker
+        (change)="onImagePicked($event)"
+      >
+    </div>
+
+    <br />
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+    >
+      Save Post
+    </button>
+  </form>
+</mat-card>

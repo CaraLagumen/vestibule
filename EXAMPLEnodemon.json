@@ -1,0 +1,8 @@
+// {
+//   "env": {
+//     "DATABASE": "mongodb+srv://cara:<password>@cluster0-nevmw.mongodb.net/vestibule?retryWrites=true&w=majority",
+//     "DATABASE_LOCAL": "mongodb://localhost:27017/vestibule",
+//     "DATABASE_PASSWORD": "2Nrfp1gaoCKgWkf7",
+//     "JWT_SECRET": "thequickgingertabbyjumpedoverthelazygoldenretriever"
+//   }
+// }

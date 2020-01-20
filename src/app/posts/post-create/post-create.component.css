@@ -1,0 +1,45 @@
+mat-form-field,
+textarea {
+  width: 100%;
+}
+
+mat-spinner {
+  margin: auto;
+}
+
+button {
+  float: right;
+}
+
+mat-card {
+  padding-bottom: 50px;
+}
+
+input[type='file'] {
+  visibility: hidden;
+}
+
+.image-preview {
+  width: 100%;
+  margin: 1rem;
+  margin-left: 75%;
+}
+
+.image-preview img {
+  width: 25%;
+}
+
+.post-image {
+  width: 100%;
+  margin: 1rem;
+  margin-left: 25%;
+}
+
+.post-image img {
+  width: 50%;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+  color: white
+}
