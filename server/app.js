@@ -15,7 +15,7 @@ const app = express();
 app.enable(`trust proxy`);
 
 //HEROKU MODIFICATION
-const distDir = __dirname + "/dist/";
+const distDir = __dirname + "/dist/vestibule/";
 app.use(express.static(distDir));
 
 app.use(cors()); //ACCESS-CONTROL-ALLOW-ORIGIN
