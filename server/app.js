@@ -5,7 +5,6 @@ const path = require("path");
 const mongoSanitize = require(`express-mongo-sanitize`);
 const xss = require(`xss-clean`);
 const csp = require(`express-csp-header`);
-const path = require(`path`);
 
 const postsRoutes = require("./routes/posts");
 const userRoutes = require("./routes/user");
