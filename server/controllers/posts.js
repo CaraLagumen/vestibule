@@ -1,11 +1,12 @@
 const Post = require("../models/post");
 
 exports.createPost = async (req, res, next) => {
-  const url = `${req.protocol}://${req.get("host")}`;
+  // const url = `${req.protocol}://${req.get("host")}`;
   const post = await Post.create({
     title: req.body.title,
     content: req.body.content,
-    imagePath: `${url}/images/${req.file.filename}`,
+    // imagePath: `${url}/images/${req.file.filename}`,,
+    imagePath: `/images/${req.file.filename}`,
     creator: req.userData.userId
   });
 
@@ -59,8 +60,9 @@ exports.updatePost = async (req, res, next) => {
   let imagePath = req.body.imagePath;
 
   if (req.file) {
-    const url = `${req.protocol}://${req.get("host")}`;
-    imagePath = `${url}/images/${req.file.filename}`;
+    // const url = `${req.protocol}://${req.get("host")}`;
+    // imagePath = `${url}/images/${req.file.filename}`;
+    imagePath = `/images/${req.file.filename}`;
   }
 
   // const post = await Post.findByIdAndUpdate(
