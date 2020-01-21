@@ -7,25 +7,22 @@ const MIME_TYPE_MAP = {
 };
 
 const storage = multer.diskStorage({
-  destination: (req, file, callback) => {
+  destination: (req, file, cb) => {
     const isValid = MIME_TYPE_MAP[file.mimetype];
     let error = new Error("Invalid mime type");
-
     if (isValid) {
       error = null;
     }
-
-    callback(error, "images");
+    cb(error, "server/images");
   },
-  filename: (req, file, callback) => {
+  filename: (req, file, cb) => {
     const name = file.originalname
       .toLowerCase()
       .split(" ")
       .join("-");
     const ext = MIME_TYPE_MAP[file.mimetype];
-
-    callback(null, `${name}-${Date.now()}.${ext}`);
+    cb(null, name + "-" + Date.now() + "." + ext);
   }
 });
 
-module.exports = multer({ storage }).single("image");
+module.exports = multer({ storage: storage }).single("image");
