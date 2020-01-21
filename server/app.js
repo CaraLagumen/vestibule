@@ -15,7 +15,7 @@ const app = express();
 app.enable("trust proxy");
 
 //SERVE FILES
-app.use("/images", express.static("images"));
+app.use("/images", express.static(path.join(__dirname, "./images")));
 app.use("/", express.static(path.join(__dirname, "../dist/vestibule")));
 
 app.use(cors()); //ACCESS-CONTROL-ALLOW-ORIGIN
