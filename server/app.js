@@ -37,7 +37,7 @@ app.use(
 app.use("/api/posts", postsRoutes);
 app.use("/api/user", userRoutes);
 app.use((req, res, next) => {
-  res.sendFile(path.join(__dirname, "dist", "index.html"));
+  res.sendFile(path.join(__dirname, "dist", "vestibule", "index.html"));
 });
 
 module.exports = app;
