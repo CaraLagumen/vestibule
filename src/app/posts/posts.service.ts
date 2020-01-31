@@ -2,10 +2,10 @@ import { Injectable } from "@angular/core";
 import { Subject } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { map } from "rxjs/operators";
+import { Router } from "@angular/router";
 
 import { Post } from "./post.model";
-import { Router } from "@angular/router";
-import { environment } from '../../environments/environment'
+import { environment } from "../../environments/environment";
 
 const BACKEND_URL = `${environment.apiUrl}/posts`;
 
@@ -120,23 +120,21 @@ export class PostsService {
       postData = { id, title, content, imagePath: image, creator: null };
     }
 
-    this.http
-      .patch(`${BACKEND_URL}/${id}`, postData)
-      .subscribe(() => {
-        // const updatedPosts = [...this.posts];
-        // const oldPostIndex = updatedPosts.findIndex(el => el.id === id);
-        // const post: Post = {
-        //   id,
-        //   title,
-        //   content,
-        //   imagePath: ""
-        // };
+    this.http.patch(`${BACKEND_URL}/${id}`, postData).subscribe(() => {
+      // const updatedPosts = [...this.posts];
+      // const oldPostIndex = updatedPosts.findIndex(el => el.id === id);
+      // const post: Post = {
+      //   id,
+      //   title,
+      //   content,
+      //   imagePath: ""
+      // };
 
-        // updatedPosts[oldPostIndex] = post;
-        // this.posts = updatedPosts;
-        // this.postsUpdated.next([...this.posts]);
-        this.router.navigate(["/"]);
-      });
+      // updatedPosts[oldPostIndex] = post;
+      // this.posts = updatedPosts;
+      // this.postsUpdated.next([...this.posts]);
+      this.router.navigate(["/"]);
+    });
   }
 
   deletePost(postId: string) {
